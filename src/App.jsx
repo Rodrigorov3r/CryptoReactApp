@@ -1,11 +1,10 @@
 import { useState } from 'react';
+import Crypto from './components/Crypto';
 
 function App() {
   return (
     <div className="App">
-      <>
-        <p>saca saca a esta ricula</p>
-      </>
+      <Crypto />
     </div>
   );
 }
