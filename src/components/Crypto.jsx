@@ -22,13 +22,51 @@ const Crypto = () => {
   const busqueda = (e) => setBuscar(e.target.value);
 
   //4- filtrar
-  const resultado = buscar
+  const resultados = buscar
     ? cryptos.filter((crypto) =>
         crypto.name.toLowerCase().includes(buscar.toLowerCase())
       )
     : cryptos;
 
-  return <div>Crypto</div>;
+  return (
+    <>
+      <input
+        value={buscar}
+        onChange={busqueda}
+        placeholder=" Busca tu Crypto"
+        className="form-control"
+      />
+      <table className="table table-dark table-hover mt-3">
+        <thead>
+          <tr>
+            <th>Ranking</th>
+            <th>Name</th>
+            <th>Symbol</th>
+            <th>Price</th>
+            <th>Price 24h</th>
+          </tr>
+        </thead>
+        <tbody>
+          {resultados.map((resultado) => (
+            <tr key={resultado.id}>
+              <td>{resultado.market_data.market_cap_rank}</td>
+              <td>
+                <img src={resultado.image.small} />
+                {resultado.name}
+              </td>
+              <td>
+                {resultado.symbol.toUpperCase()}
+              </td>
+              <td>{resultado.market_data.current_price.usd.toFixed(2)} </td>
+              {/* si es + verde, - rojo /// USAR class badge bootstrap
+              <td>{resultado.market_data.price_change_percentage_24h} </td>
+               */}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
+  );
 };
 
 export default Crypto;
