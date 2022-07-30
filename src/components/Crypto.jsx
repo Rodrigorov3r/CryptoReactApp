@@ -29,7 +29,7 @@ const Crypto = () => {
     : cryptos;
 
   return (
-    <>
+    <div className="w-75 mx-auto">
       <input
         value={buscar}
         onChange={busqueda}
@@ -54,18 +54,28 @@ const Crypto = () => {
                 <img src={resultado.image.small} />
                 {resultado.name}
               </td>
-              <td>
-                {resultado.symbol.toUpperCase()}
-              </td>
+              <td>{resultado.symbol.toUpperCase()}</td>
               <td>{resultado.market_data.current_price.usd.toFixed(2)} </td>
               {/* si es + verde, - rojo /// USAR class badge bootstrap
               <td>{resultado.market_data.price_change_percentage_24h} </td>
                */}
+              <td>
+                {' '}
+                {resultado.market_data.price_change_percentage_24h > 0 ? (
+                  <span className="badge text-bg-success">
+                    {resultado.market_data.price_change_percentage_24h}
+                  </span>
+                ) : (
+                  <span className="badge text-bg-danger">
+                    {resultado.market_data.price_change_percentage_24h}
+                  </span>
+                )}
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
-    </>
+    </div>
   );
 };
 
