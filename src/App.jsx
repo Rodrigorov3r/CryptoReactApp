@@ -6,7 +6,8 @@ function App() {
   return (
     <div className="fondo">
       <div className="container-xl">
-        <h1>Crypto Gorch Market &#128017;</h1>
+        {/* <h1>Crypto Gorch Market &#128017;</h1> */}
+        <h1>Crypto React</h1>
         <Crypto />
       </div>
     </div>
