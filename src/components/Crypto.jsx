@@ -38,7 +38,7 @@ const Crypto = () => {
       />
       <table className="table table-dark table-hover mt-3">
         <thead>
-          <tr>
+          <tr className="fs-4 text-center">
             <th>Ranking</th>
             <th>Name</th>
             <th>Symbol</th>
@@ -49,20 +49,25 @@ const Crypto = () => {
         <tbody>
           {resultados.map((resultado) => (
             <tr key={resultado.id}>
-              <td>{resultado.market_data.market_cap_rank}</td>
-              <td>
-                <img src={resultado.image.small} />
-                {resultado.name}
+              <td className="text-center">
+                {resultado.market_data.market_cap_rank}
               </td>
-              <td>{resultado.symbol.toUpperCase()}</td>
-              <td>{resultado.market_data.current_price.usd.toFixed(2)} </td>
+                <td>
+              <div className='ms-5'>
+                  <img src={resultado.image.small} className="me-4" />
+                  {resultado.name}
+              </div>
+                </td>
+              <td className="text-center">{resultado.symbol.toUpperCase()}</td>
+              <td className="text-center">
+                {resultado.market_data.current_price.usd.toFixed(2)}{' '}
+              </td>
               {/* si es + verde, - rojo /// USAR class badge bootstrap
               <td>{resultado.market_data.price_change_percentage_24h} </td>
                */}
-              <td>
-                {' '}
+              <td className="text-center">
                 {resultado.market_data.price_change_percentage_24h > 0 ? (
-                  <span className="badge text-bg-success">
+                  <span className="badge text-bg-success ">
                     {resultado.market_data.price_change_percentage_24h}
                   </span>
                 ) : (
